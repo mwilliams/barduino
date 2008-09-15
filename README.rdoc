@@ -2,4 +2,4 @@
 
 Barduino is a sketch using the Ruby Arduino framework (http://rad.rubyforge.org) to turn your Arduino into a Bar Monkey (a device to dispense liquids).  This example demonstrates controlling two windshield washer pumps via the serial port.  You can then write a front-end in any language you would like that can write to your serial port.
 
-This project is only a proof of concept for the Orlando Ruby Users Group project.
+This project is only a proof of concept for the Orlando Ruby Users Group.
