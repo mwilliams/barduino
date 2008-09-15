@@ -1,5 +1,5 @@
-=Welcome to RAD (Ruby Arduino Development) Quick Start Documentation
+=Welcome to Barduino
 
-ArduinoSketch is the main access point for working with RAD. Sub-classes of ArduinoSketch have access to a wide array of convenient class methods (documented below) for doing the most common kinds of setup needed when programming the Arduino such as configuring input and output pins and establishing serial connections. Here is the canonical 'hello world' example of blinking a single LED in RAD:
+Barduino is a sketch using the Ruby Arduino framework (http://rad.rubyforge.org) to turn your Arduino into a Bar Monkey (a device to dispense liquids).  This example demonstrates controlling two windshield washer pumps via the serial port.  You can then write a front-end in any language you would like that can write to your serial port.
 
-test... to be continued if it works..
+This project is only a proof of concept for the Orlando Ruby Users Group project.
