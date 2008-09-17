@@ -23,10 +23,16 @@ class Barduino < ArduinoSketch
   end
 
   def dispense(pump)
+    # Hack for RubyToC to make it realize this dispense method
+    # has a parameter to it (something along those lines).
+    pump = 0 + pump
     @amount = serial_read
-    digital_write pump, ON
-    delay 4
-    digital_write pump, OFF
+    digitalWrite pump, ON
+    delay 5000
+    digitalWrite pump, OFF
+    # Add a delay to prevent whatever is driving this from getting
+    # ahead of the serial port.
+    delay 2000
   end
 
 end
