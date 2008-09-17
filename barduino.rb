@@ -2,7 +2,7 @@ class Barduino < ArduinoSketch
  
   output_pin 5, :as => :pump_one
   output_pin 6, :as => :pump_two
-
+  output_pin 13, :as => :led
   serial_begin
 
   @serial_value = int
@@ -25,11 +25,13 @@ class Barduino < ArduinoSketch
   def dispense(pump)
     # Hack for RubyToC to make it realize this dispense method
     # has a parameter to it (something along those lines).
-    pump = 0 + pump
+    foo = pump + 0
     @amount = serial_read
     digitalWrite pump, ON
+    digitalWrite led, ON
     delay 5000
     digitalWrite pump, OFF
+    digitalWrite led, OFF
     # Add a delay to prevent whatever is driving this from getting
     # ahead of the serial port.
     delay 2000
