@@ -15,14 +15,17 @@ void loop();
 void setup();
 // sketch signatures
 int main();
+int pump_one();
+int pump_two();
 int led();
+int photo_resistor();
 // plugin signatures
-
 
 //////////////////////////////////////////////////////////////////////////
 // plugin structs
 //////////////////////////////////////////////////////////////////////////
 void loop();
+void dispense(long pump);
 
 //////////////////////////////////////////////////////////////////////////
 // plugin external variables
@@ -31,6 +34,8 @@ void loop();
 //////////////////////////////////////////////////////////////////////////
 // sketch external variables
 //////////////////////////////////////////////////////////////////////////
+int __sensor;
+int __serial_value;
 
 // servo_settings array
 
@@ -44,10 +49,22 @@ void loop();
 //////////////////////////////////////////////////////////////////////////
 // variable and accessors
 //////////////////////////////////////////////////////////////////////////
+int _pump_one = 5;
+int _pump_two = 6;
 int _led = 13;
+int _photo_resistor = 0;
 
+int pump_one() {
+	return _pump_one;
+}
+int pump_two() {
+	return _pump_two;
+}
 int led() {
 	return _led;
+}
+int photo_resistor() {
+	return _photo_resistor;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -59,7 +76,13 @@ int led() {
 //////////////////////////////////////////////////////////////////////////
 void setup() {
 	// pin modes
+	pinMode(0, INPUT);
+	pinMode(5, OUTPUT);
+	pinMode(6, OUTPUT);
 	pinMode(13, OUTPUT);
+	digitalWrite( 0, HIGH ); // enable pull-up resistor for input
+	// other setup
+Serial.begin(9600);
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -72,12 +95,55 @@ void setup() {
 //////////////////////////////////////////////////////////////////////////
 // plugin methods
 //////////////////////////////////////////////////////////////////////////
-void blink(int pin, int ms) {
-  	digitalWrite( pin, HIGH );
-  	delay( ms );
-  	digitalWrite( pin, LOW );
-  	delay( ms );
-  }
+
+// serial helpers
+int serial_available() {
+          return (Serial.available() > 0);
+        }
+        
+        char serial_read() {
+          return (char) Serial.read();
+        }
+        
+        void serial_flush() {
+          return Serial.flush();
+        }
+
+        void serial_print( char str ) {
+          return Serial.print( str );
+        }
+
+        void serial_print( char* str ) {
+          return Serial.print( str );
+        }
+
+        void serial_print( int i ) {
+          return Serial.print( i );
+        }
+
+        void serial_print( long i ) {
+          return Serial.print( i );
+        }
+
+      	void serial_println( char* str ) {
+          return Serial.println( str );
+        }
+
+        void serial_println( char str ) {
+          return Serial.println( str );
+        }
+
+      	void serial_println( int i ) {
+          return Serial.println( i );
+        }
+
+        void serial_println( long i ) {
+          return Serial.println( i );
+        }
+
+        void serial_print( unsigned long i ) {
+          return Serial.print( i );
+        }
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -95,5 +161,27 @@ int main() {
 //////////////////////////////////////////////////////////////////////////
 void
 loop() {
-blink(led(), 500);
+__sensor = analogRead(photo_resistor());
+if (__sensor < 100) {
+digitalWrite(led(), 1);
+if (serial_available()) {
+__serial_value = serial_read();
+if (__serial_value == '1') {
+dispense(pump_one());
+};
+if (__serial_value == '2') {
+dispense(pump_two());
+}
+}
+} else {
+digitalWrite(led(), 0);
+}
+}
+void
+dispense(long pump) {
+long foo;
+foo = pump + 0;
+digitalWrite(pump, 1);
+delay(2000);
+digitalWrite(pump, 0);
 }

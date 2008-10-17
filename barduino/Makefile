@@ -62,8 +62,8 @@
 
 PORT = /dev/tty.usbserial*
 TARGET = barduino
-ARDUINO = /Applications/arduino-0011/hardware/cores/arduino
-SOFTWARE_SERIAL = /Applications/arduino-0011/hardware/libraries/SoftwareSerial
+ARDUINO = /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino
+SOFTWARE_SERIAL = /home/mwilliams/Desktop/arduino-0011/hardware/libraries/SoftwareSerial
 LIBRARY_ROOT = /home/mwilliams/Projects/barduino/vendor/libraries
 SRC = $(ARDUINO)/pins_arduino.c $(ARDUINO)/wiring.c \
 $(ARDUINO)/wiring_analog.c $(ARDUINO)/wiring_digital.c \
@@ -75,7 +75,7 @@ ASRC =
 F_CPU = 16000000
 FORMAT = ihex
 UPLOAD_RATE = 19200
-BIN_DIR = /Applications/arduino-0011/hardware/tools/avr/bin
+BIN_DIR = /home/mwilliams/Desktop/arduino-0011/hardware/tools/avr/bin
 
 # Name of this Makefile (used for "make depend").
 MAKEFILE = Makefile
@@ -117,7 +117,7 @@ AVRDUDE_PROGRAMMER = stk500
 AVRDUDE_PORT = $(PORT)
 AVRDUDE_WRITE_FLASH = -U flash:w:$(TARGET).hex
 AVRDUDE_FLAGS = -F -p $(MCU) -P $(AVRDUDE_PORT) -c $(AVRDUDE_PROGRAMMER) \
-  -b $(UPLOAD_RATE) -C /Applications/arduino-0011/hardware/tools/avr/etc/avrdude.conf
+  -b $(UPLOAD_RATE) -C /home/mwilliams/Desktop/arduino-0011/hardware/tools/avr/etc/avrdude.conf
 
 # Program settings
 CC = $(BIN_DIR)/avr-gcc
@@ -242,3 +242,205 @@ depend:
 
 .PHONY:	all build elf hex eep lss sym program coff extcoff clean depend
 # DO NOT DELETE THIS LINE -- make depend depends on it.
+pins_arduino.o:  \
+ /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/pins_arduino.c \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/io.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/sfr_defs.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/inttypes.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/stdint.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/iom168.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/iomx8.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/portpins.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/common.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/version.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/fuse.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/lock.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring_private.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/interrupt.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/signal.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/delay.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/util/delay.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/util/delay_basic.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/stdio.h \
+  /usr/lib/gcc/avr/4.3.0/include/stdarg.h \
+  /usr/lib/gcc/avr/4.3.0/include/stddef.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/binary.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/pins_arduino.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/pgmspace.h
+wiring.o:  \
+ /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring.c \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring_private.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/io.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/sfr_defs.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/inttypes.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/stdint.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/iom168.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/iomx8.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/portpins.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/common.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/version.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/fuse.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/lock.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/interrupt.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/signal.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/delay.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/util/delay.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/util/delay_basic.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/stdio.h \
+  /usr/lib/gcc/avr/4.3.0/include/stdarg.h \
+  /usr/lib/gcc/avr/4.3.0/include/stddef.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/binary.h
+wiring_analog.o:  \
+ /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring_analog.c \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring_private.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/io.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/sfr_defs.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/inttypes.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/stdint.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/iom168.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/iomx8.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/portpins.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/common.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/version.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/fuse.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/lock.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/interrupt.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/signal.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/delay.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/util/delay.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/util/delay_basic.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/stdio.h \
+  /usr/lib/gcc/avr/4.3.0/include/stdarg.h \
+  /usr/lib/gcc/avr/4.3.0/include/stddef.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/binary.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/pins_arduino.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/pgmspace.h
+wiring_digital.o:  \
+ /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring_digital.c \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring_private.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/io.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/sfr_defs.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/inttypes.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/stdint.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/iom168.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/iomx8.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/portpins.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/common.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/version.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/fuse.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/lock.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/interrupt.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/signal.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/delay.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/util/delay.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/util/delay_basic.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/stdio.h \
+  /usr/lib/gcc/avr/4.3.0/include/stdarg.h \
+  /usr/lib/gcc/avr/4.3.0/include/stddef.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/binary.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/pins_arduino.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/pgmspace.h
+wiring_pulse.o:  \
+ /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring_pulse.c \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring_private.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/io.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/sfr_defs.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/inttypes.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/stdint.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/iom168.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/iomx8.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/portpins.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/common.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/version.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/fuse.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/lock.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/interrupt.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/signal.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/delay.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/util/delay.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/util/delay_basic.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/stdio.h \
+  /usr/lib/gcc/avr/4.3.0/include/stdarg.h \
+  /usr/lib/gcc/avr/4.3.0/include/stddef.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/binary.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/pins_arduino.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/pgmspace.h
+wiring_serial.o:  \
+ /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring_serial.c \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring_private.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/io.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/sfr_defs.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/inttypes.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/stdint.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/iom168.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/iomx8.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/portpins.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/common.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/version.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/fuse.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/lock.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/interrupt.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/signal.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/delay.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/util/delay.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/util/delay_basic.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/stdio.h \
+  /usr/lib/gcc/avr/4.3.0/include/stdarg.h \
+  /usr/lib/gcc/avr/4.3.0/include/stddef.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/binary.h
+wiring_shift.o:  \
+ /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring_shift.c \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring_private.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/io.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/sfr_defs.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/inttypes.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/stdint.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/iom168.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/iomx8.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/portpins.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/common.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/version.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/fuse.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/lock.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/interrupt.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/signal.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/delay.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/util/delay.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/util/delay_basic.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/stdio.h \
+  /usr/lib/gcc/avr/4.3.0/include/stdarg.h \
+  /usr/lib/gcc/avr/4.3.0/include/stddef.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/binary.h
+WInterrupts.o:  \
+ /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/WInterrupts.c \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/inttypes.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/stdint.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/io.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/sfr_defs.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/iom168.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/iomx8.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/portpins.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/common.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/version.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/fuse.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/lock.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/interrupt.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/signal.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/pgmspace.h \
+  /usr/lib/gcc/avr/4.3.0/include/stddef.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/stdio.h \
+  /usr/lib/gcc/avr/4.3.0/include/stdarg.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/WConstants.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/binary.h \
+  /home/mwilliams/Desktop/arduino-0011/hardware/cores/arduino/wiring_private.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/avr/delay.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/util/delay.h \
+  /usr/lib/gcc/avr/4.3.0/../../../../avr/include/util/delay_basic.h

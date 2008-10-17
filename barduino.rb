@@ -3,22 +3,28 @@ class Barduino < ArduinoSketch
   output_pin 5, :as => :pump_one
   output_pin 6, :as => :pump_two
   output_pin 13, :as => :led
+  input_pin 0, :as => :photo_resistor
+ 
   serial_begin
 
   @serial_value = int
-  @amount = int
+  @sensor = int
  
   def loop
-    if serial_available
-      @serial_value = serial_read
-      if @serial_value == '1'
-        serial_println "Pump one ready..." 
-        dispense pump_one
+    @sensor = analogRead(photo_resistor)
+    if @sensor < 100
+      digitalWrite led, ON
+      if serial_available
+        @serial_value = serial_read
+        if @serial_value == '1'
+          dispense pump_one
+        end
+        if @serial_value == '2'
+          dispense pump_two
+        end
       end
-      if @serial_value == '2'
-        serial_println "Pump two ready..." 
-        dispense pump_two
-      end
+    else
+      digitalWrite led, OFF
     end
   end
 
@@ -26,15 +32,9 @@ class Barduino < ArduinoSketch
     # Hack for RubyToC to make it realize this dispense method
     # has a parameter to it (something along those lines).
     foo = pump + 0
-    @amount = serial_read
     digitalWrite pump, ON
-    digitalWrite led, ON
-    delay 5000
-    digitalWrite pump, OFF
-    digitalWrite led, OFF
-    # Add a delay to prevent whatever is driving this from getting
-    # ahead of the serial port.
     delay 2000
+    digitalWrite pump, OFF
   end
 
 end
